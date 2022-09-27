@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
 import { getData } from "./fetchData";
 
+console.log("hids1d");
 const currentLocation = navigator.geolocation.getCurrentPosition(
   (response) => {
     // console.log(response);
@@ -41,9 +42,13 @@ function generalWeatherInfo(info) {
   const humidity = document.createElement("p");
   const windSpeed = document.createElement("p");
   const location = document.createElement("p");
-  // const timeZone = document.createElement("p");
 
-  //Adding Classes
+  weatherCard.innerHTML = "";
+
+  //Classes
+  weatherInfo.classList.remove("skeleton");
+  weatherCard.classList.remove("skeleton");
+  weatherInfo.classList.remove("skeleton-text");
   weatherInfo.classList.add("weather-info");
   leftDiv.classList.add("weather-left");
   rightDiv.classList.add("weather-right");
@@ -53,22 +58,22 @@ function generalWeatherInfo(info) {
   c.classList.add("celsius");
   weatherDescription.classList.add("description-container");
   humidity.classList.add("weather-description");
+  location.classList.add("location-description");
   windSpeed.classList.add("weather-description");
 
   //Setting attributes
-
   location.textContent = `${info.name}, ${info.sys.country}`;
-  // timeZone.textContent = new Date(Date.UTC(info.timeZone));
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${info.weather[0].icon}@4x.png`
   );
   temp.textContent = info.main.temp;
-  humidity.textContent = "Humidity: " + info.main.humidity + "%";
-  windSpeed.textContent = "Wind Speed: " + info.wind.speed + " mpH";
+  humidity.innerHTML = "<b>Humidity:</b> " + info.main.humidity + "%";
+  windSpeed.innerHTML = "<b>Wind:</b> " + info.wind.speed + " mpH";
   f.textContent = "°F";
   c.textContent = "°C";
 
+  //To Fahrenheit
   f.onclick = () => {
     f.classList.add("selected-temperature");
     c.classList.remove("selected-temperature");
@@ -78,6 +83,7 @@ function generalWeatherInfo(info) {
     }
   };
 
+  //To Celcius
   c.onclick = () => {
     f.classList.remove("selected-temperature");
     c.classList.add("selected-temperature");
@@ -89,11 +95,12 @@ function generalWeatherInfo(info) {
   };
 
   weatherInfo.appendChild(location);
-  // weatherInfo.appendChild(timeZone);
+
   leftDiv.appendChild(weatherIcon);
   rightDiv.appendChild(temp);
   rightDiv.appendChild(f);
   rightDiv.appendChild(c);
+
   weatherDescription.appendChild(humidity);
   weatherDescription.appendChild(windSpeed);
 

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *,
 *::after,
 *::before{
@@ -6,18 +7,22 @@
     box-sizing: border-box;
 }
 :root{
-    --card-color: #fff;
+    --image-bg-color: #47B5FF;
     --text-white: #fff;
 }
 html,body{
     box-sizing: inherit;
     font-size: 16px;
+    font-family: "Roboto", sans-serif;
 }
 .weather-left{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
+    background-color: var(--image-bg-color);
+    border-radius: 5px;
+    margin: .125rem;
 }
 .weather-right{
     display: flex;
@@ -27,36 +32,65 @@ html,body{
 .selected-temperature{
     font-weight: bold;
 }
-.weather-description{
+.weather-description,
+.location-description{
     padding: 1px 0 1px 5px;
+}
+.location-description{
+    font-size: 1.125rem;
 }
 .temp{
     padding: 0 .5rem;
     font-size: 2.5rem;
     font-weight: bold;
+    height: fit-content;
 }
 .fahrenheit,
 .celsius{
     height: fit-content;
-    width: fit-content;
-    background-color: var(--card-color);
     font-size: 1rem;
     border: none;
     cursor: pointer;
     text-align: center;
     padding: .2rem .5rem;
+    background-color: var(--text-white);
     width: 35px;
 }
 .fahrenheit{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     border-right: 1px solid #000;
+}
+.celsius{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .fahrenheit:hover,
 .celsius:hover{
-    background-color: var(--text-white);
+    color: darkorange;
 }
 #weather-card{
     display: grid;
-    grid-template-columns: 175px auto;
+    grid-template-columns: 150px auto;
     justify-content: center;
-    background-color: var(--card-color);
 }
+
+/* SKELETON LOADING ANIMATION */
+.skeleton{
+    height: 146px;
+    width: 95%;
+    margin: .5rem;
+    animation: skeleton-loading 1.5s linear infinite alternate;
+}
+.skeleton-text{
+    height: 25px;
+}
+
+@keyframes skeleton-loading {
+    0%{
+        background-color: hsl(200, 20%, 70%);
+    }100%{
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+/* ------------------------ */
