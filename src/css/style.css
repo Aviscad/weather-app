@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 :root{
-    --card-color: gray;
+    --card-color: #fff;
     --text-white: #fff;
 }
 html,body{
@@ -17,17 +17,23 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100px;
 }
 .weather-right{
     display: flex;
     vertical-align: top;
+    width: fit-content;
+}
+.selected-temperature{
+    font-weight: bold;
 }
 .weather-description{
     padding: 1px 0 1px 5px;
 }
 .temp{
     padding: 0 .5rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 .fahrenheit,
 .celsius{
@@ -39,6 +45,7 @@ html,body{
     cursor: pointer;
     text-align: center;
     padding: .2rem .5rem;
+    width: 35px;
 }
 .fahrenheit{
     border-right: 1px solid #000;
@@ -49,6 +56,7 @@ html,body{
 }
 #weather-card{
     display: grid;
-    grid-template-columns: repeat(2, 150px);
+    grid-template-columns: 175px auto;
+    justify-content: center;
     background-color: var(--card-color);
 }
