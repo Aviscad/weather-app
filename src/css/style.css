@@ -1,0 +1,54 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --card-color: gray;
+    --text-white: #fff;
+}
+html,body{
+    box-sizing: inherit;
+    font-size: 16px;
+}
+.weather-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weather-right{
+    display: flex;
+    vertical-align: top;
+}
+.weather-description{
+    padding: 1px 0 1px 5px;
+}
+.temp{
+    padding: 0 .5rem;
+    font-size: 3rem;
+}
+.fahrenheit,
+.celsius{
+    height: fit-content;
+    width: fit-content;
+    background-color: var(--card-color);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: .2rem .5rem;
+}
+.fahrenheit{
+    border-right: 1px solid #000;
+}
+.fahrenheit:hover,
+.celsius:hover{
+    background-color: var(--text-white);
+}
+#weather-card{
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    background-color: var(--card-color);
+}

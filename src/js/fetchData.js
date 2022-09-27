@@ -7,7 +7,7 @@ async function getData(
   let info;
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`
     );
 
     if (response.status == 200) {
@@ -23,4 +23,5 @@ async function getData(
   return info;
 }
 
+async function getIcon() {}
 export { getData };
