@@ -19,7 +19,7 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 125px;
     background-color: var(--image-bg-color);
     border-radius: 5px;
     margin: .125rem;
@@ -80,7 +80,7 @@ html,body{
     height: 146px;
     width: 95%;
     margin: .5rem;
-    animation: skeleton-loading 1.5s linear infinite alternate;
+    animation: skeleton-loading .5s linear infinite alternate;
 }
 .skeleton-text{
     height: 25px;

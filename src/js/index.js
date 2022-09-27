@@ -3,9 +3,17 @@
 // import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
-import { getData } from "./fetchData";
+import { getData, getDataByCity } from "./fetchData";
 
-console.log("hids1d");
+const weatherCard = document.getElementById("weather-card");
+const weatherInfo = document.getElementById("weather-info");
+const leftDiv = document.getElementsByClassName("weather-left")[0];
+const rightDiv = document.getElementsByClassName("weather-right")[0];
+const weatherDescription = document.getElementsByClassName(
+  "description-container"
+)[0];
+const getLocationForm = document.getElementById("location-form");
+
 const currentLocation = navigator.geolocation.getCurrentPosition(
   (response) => {
     // console.log(response);
@@ -15,13 +23,11 @@ const currentLocation = navigator.geolocation.getCurrentPosition(
         response.coords.longitude
       );
       generalWeatherInfo(locationInfo);
-      console.log(locationInfo);
     })();
   },
   (error) => {
     (async () => {
       const locationInfo = await getData();
-      console.log(locationInfo);
       generalWeatherInfo(locationInfo);
     })();
 
@@ -30,12 +36,7 @@ const currentLocation = navigator.geolocation.getCurrentPosition(
 );
 
 function generalWeatherInfo(info) {
-  const weatherCard = document.getElementById("weather-card");
-  const weatherInfo = document.getElementById("weather-info");
-  const leftDiv = document.createElement("div");
-  const rightDiv = document.createElement("div");
   const weatherIcon = document.createElement("img");
-  const weatherDescription = document.createElement("div");
   const temp = document.createElement("p");
   const f = document.createElement("button");
   const c = document.createElement("button");
@@ -43,20 +44,13 @@ function generalWeatherInfo(info) {
   const windSpeed = document.createElement("p");
   const location = document.createElement("p");
 
-  weatherCard.innerHTML = "";
+  resetHTML();
 
   //Classes
-  weatherInfo.classList.remove("skeleton");
-  weatherCard.classList.remove("skeleton");
-  weatherInfo.classList.remove("skeleton-text");
-  weatherInfo.classList.add("weather-info");
-  leftDiv.classList.add("weather-left");
-  rightDiv.classList.add("weather-right");
   temp.classList.add("temp");
   f.classList.add("fahrenheit");
   f.classList.add("selected-temperature");
   c.classList.add("celsius");
-  weatherDescription.classList.add("description-container");
   humidity.classList.add("weather-description");
   location.classList.add("location-description");
   windSpeed.classList.add("weather-description");
@@ -108,3 +102,52 @@ function generalWeatherInfo(info) {
   weatherCard.appendChild(rightDiv);
   weatherCard.appendChild(weatherDescription);
 }
+
+async function cityWeatherInfo(city) {
+  const val = await getDataByCity(city);
+  if (val != undefined) {
+    skeletonLoader();
+    setTimeout(() => {
+      generalWeatherInfo(val);
+    }, 600);
+  }
+}
+
+function resetHTML() {
+  leftDiv.innerHTML =
+    rightDiv.innerHTML =
+    weatherDescription.innerHTML =
+    weatherInfo.innerHTML =
+      "";
+
+  weatherCard.classList.remove("skeleton");
+  weatherInfo.classList.remove("skeleton");
+  weatherInfo.classList.remove("skeleton-text");
+  leftDiv.classList.remove("skeleton");
+  leftDiv.classList.remove("skeleton-text");
+}
+
+function skeletonLoader() {
+  leftDiv.innerHTML = "";
+  leftDiv.classList.add("skeleton");
+  leftDiv.classList.add("skeleton-text");
+
+  rightDiv.innerHTML = "";
+  weatherDescription.innerHTML = "";
+
+  weatherInfo.innerHTML = "";
+  weatherInfo.classList.add("skeleton");
+  weatherInfo.classList.add("skeleton-text");
+
+  weatherCard.classList.add("skeleton");
+}
+
+getLocationForm.onsubmit = (e) => {
+  const city = document.getElementById("txtLocation");
+  e.preventDefault();
+  if (city.value.trim() != "") {
+    cityWeatherInfo(city.value);
+  } else {
+    alert("City is Required");
+  }
+};
