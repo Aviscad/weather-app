@@ -47,4 +47,12 @@ async function getDataByCity(city) {
   return info;
 }
 
-export { getData, getDataByCity };
+async function getDataWeek(lat, lon) {
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+export { getData, getDataByCity, getDataWeek };

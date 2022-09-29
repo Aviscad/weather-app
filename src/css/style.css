@@ -14,15 +14,23 @@ html,body{
     box-sizing: inherit;
     font-size: 16px;
     font-family: "Roboto", sans-serif;
+    box-sizing: inherit;
+}
+header{
+    padding: .5rem;
 }
 .weather-left{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 125px;
+    width: fit-content;
     background-color: var(--image-bg-color);
     border-radius: 5px;
     margin: .125rem;
+}
+.weather-left img{ 
+    width: 125px;
 }
 .weather-right{
     display: flex;
@@ -45,8 +53,7 @@ html,body{
     font-weight: bold;
     height: fit-content;
 }
-.fahrenheit,
-.celsius{
+.fahrenheit{
     height: fit-content;
     font-size: 1rem;
     border: none;
@@ -59,28 +66,21 @@ html,body{
 .fahrenheit{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-right: 1px solid #000;
 }
-.celsius{
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-.fahrenheit:hover,
-.celsius:hover{
+.fahrenheit:hover{
     color: darkorange;
 }
 #weather-card{
     display: grid;
-    grid-template-columns: 150px auto;
-    justify-content: center;
+    grid-template-columns: 130px auto;
 }
 
 /* SKELETON LOADING ANIMATION */
 .skeleton{
     height: 146px;
-    width: 95%;
     margin: .5rem;
     animation: skeleton-loading .5s linear infinite alternate;
+    border-radius: 5px;
 }
 .skeleton-text{
     height: 25px;
@@ -94,3 +94,34 @@ html,body{
     }
 }
 /* ------------------------ */
+
+/* TIMELINE - STYLES */
+.timeline-item {
+    background-color: #fff;
+    padding: .5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px
+}
+#weather-timeline {
+    display: flex;
+    flex-direction: row;
+    margin-right: .5rem;
+    justify-content: space-between;
+    padding: .5rem;
+    gap: .5rem;
+    overflow-x: auto;
+}
+#weather-timeline div p {
+    margin: 0;
+    padding: 1px 0;
+    min-width: 95px;
+    text-align: center;
+}
+#weather-timeline div img {
+    width: 50px;
+}
+/* ------------------------- */
