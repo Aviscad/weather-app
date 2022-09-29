@@ -17,7 +17,6 @@ const getLocationForm = document.getElementById("location-form");
 
 const currentLocation = navigator.geolocation.getCurrentPosition(
   (response) => {
-    // console.log(response);
     (async () => {
       const locationInfo = await getData(
         response.coords.latitude,
@@ -40,7 +39,6 @@ function generalWeatherInfo(info) {
   const weatherIcon = document.createElement("img");
   const temp = document.createElement("p");
   const btnToggleTemp = document.createElement("button");
-  // const c = document.createElement("button");
   const humidity = document.createElement("p");
   const windSpeed = document.createElement("p");
   const location = document.createElement("p");
@@ -67,7 +65,7 @@ function generalWeatherInfo(info) {
   windSpeed.innerHTML = "<b>Wind:</b> " + info.wind.speed + " mpH";
   btnToggleTemp.textContent = "°F";
 
-  //To Fahrenheit
+  //Toggle Temp
   btnToggleTemp.onclick = () => {
     btnToggleTemp.classList.add("selected-temperature");
 
@@ -110,6 +108,7 @@ function generalWeatherInfo(info) {
 async function cityWeatherInfo(city) {
   const val = await getDataByCity(city);
   if (val != undefined) {
+    resetHTML();
     skeletonLoader();
     setTimeout(() => {
       generalWeatherInfo(val);
@@ -120,10 +119,12 @@ async function cityWeatherInfo(city) {
 function resetHTML() {
   leftDiv.innerHTML =
     rightDiv.innerHTML =
+    container.innerHTML =
     weatherDescription.innerHTML =
     weatherInfo.innerHTML =
       "";
 
+  container.classList.remove("skeleton");
   weatherCard.classList.remove("skeleton");
   weatherInfo.classList.remove("skeleton");
   weatherInfo.classList.remove("skeleton-text");
@@ -177,14 +178,20 @@ function skeletonLoader() {
   weatherInfo.classList.add("skeleton-text");
 
   weatherCard.classList.add("skeleton");
+
+  container.innerHTML = "";
+  container.classList.add("skeleton");
 }
 
 getLocationForm.onsubmit = (e) => {
   const city = document.getElementById("txtLocation");
   e.preventDefault();
   if (city.value.trim() != "") {
+    city.classList.remove("error");
     cityWeatherInfo(city.value);
+    city.value = null;
   } else {
-    alert("City is Required");
+    city.classList.add("error");
+    city.focus();
   }
 };

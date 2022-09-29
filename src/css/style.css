@@ -9,12 +9,37 @@
 :root{
     --image-bg-color: #47B5FF;
     --text-white: #fff;
+    --text-black: #000;
 }
 html,body{
     box-sizing: inherit;
     font-size: 16px;
     font-family: "Roboto", sans-serif;
     box-sizing: inherit;
+}
+input[type="text"],
+input[type="submit"]{
+    color: #000;
+    height: 2rem;
+    padding: 0 .5rem 0 .5rem;
+    font-size: 1.125rem;
+    border-radius: 5px;
+    border: none;
+}
+input[type="submit"]{
+    background-color: var(--image-bg-color);
+    color: var(--text-white);
+    border: 1px solid var(--image-bg-color);
+    cursor: pointer;
+}
+input[type="text"]:focus{
+    outline-color: var(--image-bg-color);
+}
+input[type="text"]:left{
+    outline-color: var(--text-black);
+}
+input[type="text"]{
+    outline: 2px solid var(--text-black);
 }
 header{
     padding: .5rem;
@@ -75,6 +100,21 @@ header{
     grid-template-columns: 130px auto;
 }
 
+/* ERROR ANIMATION */
+.error{
+    outline-color: red !important;
+    animation: shaking ease-in-out .5s;
+}
+@keyframes shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(2px) }
+    50% { transform: translateX(-2px) }
+    75% { transform: translateX(2px) }
+    100% { transform: translateX(0) }
+  }
+
+/* ------------ */
+
 /* SKELETON LOADING ANIMATION */
 .skeleton{
     height: 146px;
@@ -85,7 +125,6 @@ header{
 .skeleton-text{
     height: 25px;
 }
-
 @keyframes skeleton-loading {
     0%{
         background-color: hsl(200, 20%, 70%);
