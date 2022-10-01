@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name][contenthash].js",
     clean: true,
-    assetModuleFilename: "asset/[name][ext]",
+    assetModuleFilename: "assets/[name][ext]",
   },
   devtool: "source-map",
   devServer: {
@@ -40,6 +40,7 @@ module.exports = {
       title: "Weather App",
       filename: "index.html",
       template: "src/template.html",
+      favicon: "src/assets/cloud.png",
     }),
   ],
 };

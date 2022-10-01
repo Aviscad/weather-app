@@ -3,6 +3,7 @@
 // import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
+import "../assets/cloud.png";
 import { getData, getDataByCity, getDataWeek } from "./fetchData";
 
 const weatherCard = document.getElementById("weather-card");
@@ -34,6 +35,8 @@ const currentLocation = navigator.geolocation.getCurrentPosition(
     console.log(error.message);
   }
 );
+
+console.log(currentLocation);
 
 function generalWeatherInfo(info) {
   const weatherIcon = document.createElement("img");

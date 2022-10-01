@@ -8,8 +8,10 @@
 }
 :root{
     --image-bg-color: #47B5FF;
+    --header-color: #06283D;
     --text-white: #fff;
     --text-black: #000;
+    user-select: none;
 }
 html,body{
     box-sizing: inherit;
@@ -43,6 +45,24 @@ input[type="text"]{
 }
 header{
     padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: var(--header-color);
+    color: var(--text-white);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+}
+.header-brand{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: .5rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    width: 100%;
 }
 .weather-left{
     display: flex;
@@ -98,6 +118,17 @@ header{
 #weather-card{
     display: grid;
     grid-template-columns: 130px auto;
+}
+#brand{
+    width: 32px;
+}
+#location-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .1rem;
 }
 
 /* ERROR ANIMATION */
@@ -164,3 +195,28 @@ header{
     width: 50px;
 }
 /* ------------------------- */
+
+
+/* RESPONSIVE RULES */
+@media only screen and (min-width:400px){
+    header{
+        flex-direction: row;
+    }
+    .header-brand{
+        justify-content: flex-start;
+    }
+    #location-form{
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+
+@media only screen and (min-width: 500px){
+    #location-form{
+        flex-direction: row;
+    }
+}
+
+
+/* ---------------- */
