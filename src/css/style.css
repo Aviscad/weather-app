@@ -19,6 +19,9 @@ html,body{
     font-family: "Roboto", sans-serif;
     box-sizing: inherit;
 }
+main{
+    min-height: 100vh;
+}
 input[type="text"],
 input[type="submit"]{
     color: #000;
@@ -33,6 +36,7 @@ input[type="submit"]{
     color: var(--text-white);
     border: 1px solid var(--image-bg-color);
     cursor: pointer;
+
 }
 input[type="text"]:focus{
     outline-color: var(--image-bg-color);
@@ -53,6 +57,22 @@ header{
     background-color: var(--header-color);
     color: var(--text-white);
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--header-color);
+    color: var(--text-white);
+    box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.75);
+    padding: 1rem;
+}
+a{
+    text-decoration: none;
+    color: var(--image-bg-color);
+}
+a:hover{
+    text-decoration: underline;
 }
 .country-flag{
     width: 30px;
@@ -118,9 +138,16 @@ header{
 .fahrenheit:hover{
     color: var(--image-bg-color);
 }
+.fa-droplet{
+    color: #1471bd;
+}
+.fa-wind{
+    color: var(--image-bg-color);
+}
 #weather-card{
     display: grid;
     grid-template-columns: 130px auto;
+    padding: .5rem;
 }
 #brand{
     width: 32px;

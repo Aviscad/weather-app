@@ -1,5 +1,5 @@
-// import "@fortawesome/fontawesome-free/js/fontawesome";
-// import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
 // import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
@@ -31,12 +31,9 @@ const currentLocation = navigator.geolocation.getCurrentPosition(
       const locationInfo = await getData();
       generalWeatherInfo(locationInfo);
     })();
-
     console.log(error.message);
   }
 );
-
-console.log(currentLocation);
 
 function generalWeatherInfo(info) {
   const weatherIcon = document.createElement("img");
@@ -76,8 +73,10 @@ function generalWeatherInfo(info) {
   stateDescription.textContent =
     info.weather[0].description[0].toUpperCase() +
     info.weather[0].description.slice(1);
-  humidity.textContent = "Humidity: " + info.main.humidity + "%";
-  windSpeed.textContent = "Wind: " + info.wind.speed + " mpH";
+  humidity.innerHTML =
+    "<i class='fa-solid fa-droplet'></i>  " + info.main.humidity + "%";
+  windSpeed.innerHTML =
+    "<i class='fa-solid fa-wind'></i>  " + info.wind.speed + " mpH";
 
   btnToggleTemp.textContent = "°F";
 
