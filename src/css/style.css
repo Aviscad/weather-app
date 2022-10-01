@@ -144,10 +144,25 @@ a:hover{
 .fa-wind{
     color: var(--image-bg-color);
 }
+.day-card{
+    padding: .3rem .7rem;
+    background-color: var(--image-bg-color);
+    cursor: pointer;
+    border-radius: 20px;
+    min-width: 100px;
+    text-align: center;
+}
 #weather-card{
     display: grid;
     grid-template-columns: 130px auto;
     padding: .5rem;
+}
+#weather-days{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: .1rem;
+    padding: .2rem;
 }
 #brand{
     width: 32px;
@@ -241,6 +256,9 @@ a:hover{
         justify-content: flex-end;
         align-items: flex-end;
     }
+    #weather-days{
+        gap: 1rem;
+    }
 }
 
 @media only screen and (min-width: 500px){
@@ -256,6 +274,17 @@ a:hover{
     #weather-card{
         display: grid;
         grid-template-columns: 130px 165px auto;
+    }
+    #weather-days{
+        grid-template-columns: repeat(3, auto);
+        gap: 1rem;
+    }
+}
+
+@media only screen and (min-width: 700px){
+    #weather-days{
+        grid-template-columns: repeat(6, auto);
+        gap: .5rem;
     }
 }
 

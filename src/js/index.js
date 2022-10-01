@@ -8,6 +8,7 @@ import { getData, getDataByCity, getDataWeek } from "./fetchData";
 
 const weatherCard = document.getElementById("weather-card");
 const weatherInfo = document.getElementById("weather-info");
+const weatherDays = document.getElementById("weather-days");
 const leftDiv = document.getElementsByClassName("weather-left")[0];
 const rightDiv = document.getElementsByClassName("weather-right")[0];
 const container = document.getElementById("weather-timeline");
@@ -47,7 +48,8 @@ function generalWeatherInfo(info) {
   const countryFlag = document.createElement("img");
 
   resetHTML();
-  timeLine(info.coord.lat, info.coord.lon);
+  //timeLine(info.coord.lat, info.coord.lon);
+  filteredTimeline(info.coord.lat, info.coord.lon);
 
   //Classes
   temp.classList.add("temp");
@@ -132,7 +134,37 @@ async function cityWeatherInfo(city) {
     }, 600);
   }
 }
+async function filteredTimeline(lat, lon) {
+  const info = await getDataWeek(lat, lon);
+  const days = getDays(info.list);
 
+  weatherDays.innerHTML = "";
+
+  days.forEach((element) => {
+    const div = document.createElement("div");
+    const day = document.createElement("p");
+    let date = new Date(element).toDateString().split(" ");
+    div.classList.add("day-card");
+    div.dataset.date = element;
+    day.textContent = date[0] + ", " + date[1] + " " + date[2];
+
+    div.appendChild(day);
+    div.addEventListener("click", function () {
+      console.log(this.dataset.date);
+    });
+    weatherDays.appendChild(div);
+  });
+}
+
+function getDays(info) {
+  let days = [];
+  info.forEach((element) => {
+    let splitDate = element.dt_txt.split(" ");
+    let justDate = splitDate[0];
+    if (!days.includes(justDate)) days.push(justDate);
+  });
+  return days;
+}
 function resetHTML() {
   leftDiv.innerHTML =
     rightDiv.innerHTML =
