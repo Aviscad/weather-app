@@ -137,6 +137,9 @@ async function cityWeatherInfo(city) {
 async function filteredTimeline(lat, lon) {
   const info = await getDataWeek(lat, lon);
   const days = getDays(info.list);
+  // const firstDate = days[0].replaceAll("-", "/").toString();
+
+  // timeLine(info, firstDate);
 
   weatherDays.innerHTML = "";
 
@@ -152,6 +155,7 @@ async function filteredTimeline(lat, lon) {
     div.appendChild(day);
     div.addEventListener("click", function () {
       console.log(this.dataset.date);
+      timeLine(info, this.dataset.date);
     });
     weatherDays.appendChild(div);
   });
@@ -181,12 +185,16 @@ function resetHTML() {
   leftDiv.classList.remove("skeleton");
   leftDiv.classList.remove("skeleton-text");
 }
-async function timeLine(lat, lon) {
+function timeLine(info, date) {
+  console.log(info);
+  info = info.list.filter((element) => {
+    return element.dt_txt.startsWith(date);
+  });
+
   container.innerHTML = "";
-  const info = await getDataWeek(lat, lon);
   container.classList.remove("skeleton");
 
-  info.list.forEach((element) => {
+  info.forEach((element) => {
     const div = document.createElement("div");
     const p3 = document.createElement("p");
     const p4 = document.createElement("p");
@@ -197,7 +205,7 @@ async function timeLine(lat, lon) {
     div.classList.add("timeline-item");
 
     let time = element.dt_txt.split(" ");
-    let toDate = new Date(time[0]);
+    let toDate = new Date(time[0].replaceAll("-", "/"));
 
     p.textContent = time[1].slice(0, -3);
     p2.textContent = element.weather[0].main;
