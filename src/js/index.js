@@ -44,7 +44,10 @@ function generalWeatherInfo(info) {
   const btnToggleTemp = document.createElement("button");
   const humidity = document.createElement("p");
   const windSpeed = document.createElement("p");
+  const weatherState = document.createElement("p");
+  const stateDescription = document.createElement("p");
   const location = document.createElement("p");
+  const countryFlag = document.createElement("img");
 
   resetHTML();
   timeLine(info.coord.lat, info.coord.lon);
@@ -53,19 +56,29 @@ function generalWeatherInfo(info) {
   temp.classList.add("temp");
   btnToggleTemp.classList.add("fahrenheit");
   btnToggleTemp.classList.add("selected-temperature");
+  weatherState.classList.add("location-description");
+  stateDescription.classList.add("location-description");
   humidity.classList.add("weather-description");
   location.classList.add("location-description");
   windSpeed.classList.add("weather-description");
+  countryFlag.classList.add("country-flag");
 
   //Setting attributes
-  location.textContent = `${info.name}, ${info.sys.country}; ${info.weather[0].main} - ${info.weather[0].description}`;
+  location.textContent = info.name + ", " + info.sys.country;
+  countryFlag.src = "https://countryflagsapi.com/png/" + info.sys.country;
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${info.weather[0].icon}@4x.png`
   );
+  location.appendChild(countryFlag);
   temp.textContent = info.main.temp;
-  humidity.innerHTML = "<b>Humidity:</b> " + info.main.humidity + "%";
-  windSpeed.innerHTML = "<b>Wind:</b> " + info.wind.speed + " mpH";
+  weatherState.textContent = info.weather[0].main;
+  stateDescription.textContent =
+    info.weather[0].description[0].toUpperCase() +
+    info.weather[0].description.slice(1);
+  humidity.textContent = "Humidity: " + info.main.humidity + "%";
+  windSpeed.textContent = "Wind: " + info.wind.speed + " mpH";
+
   btnToggleTemp.textContent = "°F";
 
   //Toggle Temp
@@ -100,6 +113,8 @@ function generalWeatherInfo(info) {
   rightDiv.appendChild(temp);
   rightDiv.appendChild(btnToggleTemp);
 
+  weatherDescription.appendChild(weatherState);
+  weatherDescription.appendChild(stateDescription);
   weatherDescription.appendChild(humidity);
   weatherDescription.appendChild(windSpeed);
 

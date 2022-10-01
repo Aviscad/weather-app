@@ -54,6 +54,10 @@ header{
     color: var(--text-white);
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
 }
+.country-flag{
+    width: 30px;
+    border: 1px solid rgba(0, 0, 0,0.2);
+}
 .header-brand{
     display: flex;
     justify-content: space-between;
@@ -87,10 +91,13 @@ header{
 }
 .weather-description,
 .location-description{
-    padding: 1px 0 1px 5px;
+    padding: .3rem 0 .1rem .5rem;
 }
 .location-description{
     font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 .temp{
     padding: 0 .5rem;
@@ -104,16 +111,12 @@ header{
     border: none;
     cursor: pointer;
     text-align: center;
-    padding: .2rem .5rem;
+    padding: .3rem 0rem;
     background-color: var(--text-white);
     width: 35px;
 }
-.fahrenheit{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
 .fahrenheit:hover{
-    color: darkorange;
+    color: var(--image-bg-color);
 }
 #weather-card{
     display: grid;
@@ -148,7 +151,7 @@ header{
 
 /* SKELETON LOADING ANIMATION */
 .skeleton{
-    height: 146px;
+    height: 235px;
     margin: .5rem;
     animation: skeleton-loading .5s linear infinite alternate;
     border-radius: 5px;
@@ -156,6 +159,7 @@ header{
 .skeleton-text{
     height: 25px;
 }
+
 @keyframes skeleton-loading {
     0%{
         background-color: hsl(200, 20%, 70%);
@@ -213,8 +217,18 @@ header{
 }
 
 @media only screen and (min-width: 500px){
+    .skeleton{
+        height: 150px;
+    }
+    .skeleton-text{
+        height: 25px;
+    }
     #location-form{
         flex-direction: row;
+    }
+    #weather-card{
+        display: grid;
+        grid-template-columns: 130px 165px auto;
     }
 }
 
