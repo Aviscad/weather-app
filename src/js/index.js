@@ -143,11 +143,12 @@ async function filteredTimeline(lat, lon) {
   days.forEach((element) => {
     const div = document.createElement("div");
     const day = document.createElement("p");
-    let date = new Date(element).toDateString().split(" ");
-    div.classList.add("day-card");
-    div.dataset.date = element;
-    day.textContent = date[0] + ", " + date[1] + " " + date[2];
+    let date = new Date(element.replaceAll("-", "/")).toString().split(" ");
 
+    div.dataset.date = element;
+    div.classList.add("day-card");
+
+    day.textContent = date[0] + ", " + date[1] + " " + date[2];
     div.appendChild(day);
     div.addEventListener("click", function () {
       console.log(this.dataset.date);
@@ -180,7 +181,6 @@ function resetHTML() {
   leftDiv.classList.remove("skeleton");
   leftDiv.classList.remove("skeleton-text");
 }
-
 async function timeLine(lat, lon) {
   container.innerHTML = "";
   const info = await getDataWeek(lat, lon);
