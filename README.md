@@ -6,7 +6,7 @@ Weather forecast site using the OpenWeatherAPI. You are be able to search for yo
 
 ![main-view](https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-fullsize.png)
 
-| Mobile View                                                                                                   | Medium View                                                                                     |
+| Mobile View                                                                                                   | Medium Size View                                                                                     |
 | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-mobile.png" width="300px"> | <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-medium.png"> |
 
