@@ -1,5 +1,11 @@
 # weather-app
 
-<a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
+Weather forecast site using the OpenWeatherAPI. You are be able to search for your current location after giving permission to use geolocation on the browser or search for a specific location. You can toggle the displaying data in Fahrenheit or Celsius, and filter it by days and hours.
 
-<a href="https://www.countryflagsapi.com/">Country Flags API</a>
+## [Live Demo](https://aviscad.github.io/weather-app/)
+
+### Assets used in this project
+
+FavIcon by: <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
+
+Country flags from: <a href="https://www.countryflagsapi.com/">Country Flags API</a>
