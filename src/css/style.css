@@ -338,7 +338,7 @@ a:hover{
 
 
 /* RESPONSIVE RULES */
-@media only screen and (min-width:400px){
+@media only screen and (min-width:300px){
     header{
         flex-direction: row;
     }
@@ -351,7 +351,25 @@ a:hover{
         align-items: flex-end;
     }
     #weather-days{
+        grid-template-columns: repeat(2, auto);
         gap: 1rem;
+    }
+}
+@media only screen and (min-width:350px){
+    header{
+        flex-direction: row;
+    }
+    .header-brand{
+        justify-content: flex-start;
+    }
+    #location-form{
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    #weather-days{
+        grid-template-columns: repeat(3, auto);
+        gap: .1rem;
     }
 }
 
