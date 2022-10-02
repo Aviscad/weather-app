@@ -193,11 +193,11 @@ a:hover{
     margin-left: -125px;
     text-align: center; 
     border-radius: 5px; 
-    padding: .5rem 1rem;
+    padding: .7rem 1.125rem;
     position: fixed; 
     z-index: 2; 
-    bottom: 30px;
-    right: 30px;
+    bottom: 15px;
+    right: 15px;
 }
 #snackbar.show {
     visibility: visible;
@@ -227,8 +227,8 @@ a:hover{
         opacity: 0;
     }
     to {
-        bottom: 30px;
-        right: 30px;
+        bottom: 15px;
+        right: 15px;
         opacity: 1;
     }
 }
@@ -239,15 +239,15 @@ a:hover{
         opacity: 0;
     }
     to {
-        bottom: 30px;
-        right: 30px;
+        bottom: 15px;
+        right: 15px;
         opacity: 1;
     }
 }
 @-webkit-keyframes fadeout {
     from {
-        bottom: 30px;
-        right: 30px;
+        bottom: 15px;
+        right: 15px;
         opacity: 1;
     }
     to {
@@ -258,8 +258,8 @@ a:hover{
 } 
 @keyframes fadeout {
     from {
-        bottom: 30px;
-        right: 30px;
+        bottom: 15px;
+        right: 15px;
         opacity: 1;}
     to {
         bottom: 0;

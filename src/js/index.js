@@ -162,6 +162,8 @@ async function filteredTimeline(lat, lon) {
     });
     weatherDays.appendChild(div);
   });
+
+  weatherDays.firstChild.classList.add("selected-day");
 }
 
 function getDays(info) {
@@ -261,6 +263,6 @@ getLocationForm.onsubmit = (e) => {
   } else {
     city.classList.add("error");
     city.focus();
-    showSnackbar("#snackbar", "City name is required!", "info");
+    showSnackbar("#snackbar", "City name is required!", "warning");
   }
 };

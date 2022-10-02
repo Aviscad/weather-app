@@ -6,6 +6,6 @@ function showSnackbar(element, message, color) {
   setTimeout(() => {
     snack.classList.remove("show");
     snack.classList.remove(color);
-  }, 3000);
+  }, 2500);
 }
 export { showSnackbar };
