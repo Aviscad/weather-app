@@ -170,7 +170,7 @@ a:hover{
 }
 #weather-days{
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
     justify-content: center;
     gap: .1rem;
     padding: .2rem;
@@ -338,6 +338,7 @@ a:hover{
 
 
 /* RESPONSIVE RULES */
+
 @media only screen and (min-width:300px){
     header{
         flex-direction: row;
@@ -350,10 +351,6 @@ a:hover{
         justify-content: flex-end;
         align-items: flex-end;
     }
-    #weather-days{
-        grid-template-columns: repeat(2, auto);
-        gap: 1rem;
-    }
 }
 @media only screen and (min-width:350px){
     header{
@@ -361,11 +358,6 @@ a:hover{
     }
     .header-brand{
         justify-content: flex-start;
-    }
-    #location-form{
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
     }
     #weather-days{
         grid-template-columns: repeat(3, auto);
@@ -389,7 +381,7 @@ a:hover{
     }
     #weather-days{
         grid-template-columns: repeat(3, auto);
-        gap: 1rem;
+        gap: .1rem;
     }
 }
 
