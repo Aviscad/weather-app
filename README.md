@@ -15,3 +15,25 @@ Weather forecast site using the OpenWeatherAPI. You are be able to search for yo
 FavIcon by: <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
 
 Country flags from: <a href="https://www.countryflagsapi.com/">Country Flags API</a>
+
+## Installation
+
+### Project Setup
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run dev
+```
+
+### Compile for production
+
+```
+npm run build
+```
+
+Also you will need to create a new JS file called "**key.js**" where you will put your API KEY
