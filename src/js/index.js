@@ -1,6 +1,6 @@
 import "@fortawesome/fontawesome-free/js/fontawesome";
 import "@fortawesome/fontawesome-free/js/solid";
-// import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
 import "../assets/cloud.png";
@@ -48,7 +48,6 @@ function generalWeatherInfo(info) {
   const countryFlag = document.createElement("img");
 
   resetHTML();
-  //timeLine(info.coord.lat, info.coord.lon);
   filteredTimeline(info.coord.lat, info.coord.lon);
 
   //Classes
@@ -92,17 +91,20 @@ function generalWeatherInfo(info) {
       temp.textContent = (currentTemp * (9 / 5) + 32).toFixed(2);
       for (let i = 0; i < children.length; i++) {
         let tempTimeLine = children[i].lastChild.textContent.split(" ");
-        children[i].lastChild.textContent =
-          ((parseFloat(tempTimeLine[0]) * 9) / 5 + 32).toFixed(2) + " °F";
+        if (tempTimeLine[1] == "°C") {
+          children[i].lastChild.textContent =
+            ((parseFloat(tempTimeLine[0]) * 9) / 5 + 32).toFixed(2) + " °F";
+        }
       }
-
       btnToggleTemp.textContent = "°F";
     } else if (btnToggleTemp.textContent == "°F") {
       temp.textContent = ((info.main.temp - 32) * (5 / 9)).toFixed(2);
       for (let i = 0; i < children.length; i++) {
         let tempTimeLine = children[i].lastChild.textContent.split(" ");
-        children[i].lastChild.textContent =
-          ((parseFloat(tempTimeLine[0]) - 32) * (5 / 9)).toFixed(2) + " °C";
+        if (tempTimeLine[1] == "°F") {
+          children[i].lastChild.textContent =
+            ((parseFloat(tempTimeLine[0]) - 32) * (5 / 9)).toFixed(2) + " °C";
+        }
       }
       btnToggleTemp.textContent = "°C";
     }
@@ -137,9 +139,8 @@ async function cityWeatherInfo(city) {
 async function filteredTimeline(lat, lon) {
   const info = await getDataWeek(lat, lon);
   const days = getDays(info.list);
-  // const firstDate = days[0].replaceAll("-", "/").toString();
 
-  // timeLine(info, firstDate);
+  timeLine(info, days[0]);
 
   weatherDays.innerHTML = "";
 
@@ -154,7 +155,6 @@ async function filteredTimeline(lat, lon) {
     day.textContent = date[0] + ", " + date[1] + " " + date[2];
     div.appendChild(day);
     div.addEventListener("click", function () {
-      console.log(this.dataset.date);
       timeLine(info, this.dataset.date);
     });
     weatherDays.appendChild(div);
@@ -170,6 +170,7 @@ function getDays(info) {
   });
   return days;
 }
+
 function resetHTML() {
   leftDiv.innerHTML =
     rightDiv.innerHTML =
@@ -185,8 +186,8 @@ function resetHTML() {
   leftDiv.classList.remove("skeleton");
   leftDiv.classList.remove("skeleton-text");
 }
+
 function timeLine(info, date) {
-  console.log(info);
   info = info.list.filter((element) => {
     return element.dt_txt.startsWith(date);
   });
@@ -207,7 +208,7 @@ function timeLine(info, date) {
     let time = element.dt_txt.split(" ");
     let toDate = new Date(time[0].replaceAll("-", "/"));
 
-    p.textContent = time[1].slice(0, -3);
+    p.innerHTML = "<i class='fa-regular fa-clock'></i> " + time[1].slice(0, -3);
     p2.textContent = element.weather[0].main;
     p3.textContent = toDate.toString().slice(0, 10);
     p4.textContent = element.main.temp + " °F";

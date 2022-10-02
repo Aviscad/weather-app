@@ -226,7 +226,7 @@ a:hover{
     display: flex;
     flex-direction: row;
     margin-right: .5rem;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: .5rem;
     gap: .5rem;
     overflow-x: auto;
@@ -273,7 +273,7 @@ a:hover{
     }
     #weather-card{
         display: grid;
-        grid-template-columns: 130px 165px auto;
+        grid-template-columns: 130px 165px 220px;
     }
     #weather-days{
         grid-template-columns: repeat(3, auto);
@@ -285,6 +285,14 @@ a:hover{
     #weather-days{
         grid-template-columns: repeat(6, auto);
         gap: .5rem;
+    }
+}
+
+@media only screen and (min-width: 750px){
+    #weather-days{
+        grid-template-columns: repeat(6, auto);
+        gap: .5rem;
+        justify-content: flex-start;
     }
 }
 
