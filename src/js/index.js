@@ -4,6 +4,7 @@ import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 import "../css/style.css";
 import "../assets/cloud.png";
+import { showSnackbar } from "./snackbar.js";
 import { getData, getDataByCity, getDataWeek } from "./fetchData";
 
 const weatherCard = document.getElementById("weather-card");
@@ -32,7 +33,7 @@ const currentLocation = navigator.geolocation.getCurrentPosition(
       const locationInfo = await getData();
       generalWeatherInfo(locationInfo);
     })();
-    console.log(error.message);
+    showSnackbar("#snackbar", error.message, "info");
   }
 );
 
@@ -260,5 +261,6 @@ getLocationForm.onsubmit = (e) => {
   } else {
     city.classList.add("error");
     city.focus();
+    showSnackbar("#snackbar", "City name is required!", "info");
   }
 };

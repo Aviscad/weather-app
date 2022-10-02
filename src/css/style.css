@@ -11,6 +11,9 @@
     --header-color: #06283D;
     --text-white: #fff;
     --text-black: #000;
+    --info-bg-color: #2192FF;
+    --warning-bg-color: #D2001A;
+    --success-bg-color: #5BB318;
     user-select: none;
 }
 html,body{
@@ -182,6 +185,89 @@ a:hover{
     gap: .5rem;
     padding: .1rem;
 }
+
+/* snackbar */
+#snackbar {
+    visibility: hidden; 
+    min-width: fit-content; 
+    margin-left: -125px;
+    text-align: center; 
+    border-radius: 5px; 
+    padding: .5rem 1rem;
+    position: fixed; 
+    z-index: 2; 
+    bottom: 30px;
+    right: 30px;
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+.success{
+    background-color: var(--success-bg-color);
+    color: white;
+    font-size: .8rem;
+}
+.warning{
+    background-color: var(--warning-bg-color);
+    color: white;
+    font-size: .8rem;
+}
+.info{
+    background-color: var(--info-bg-color);
+    color: white;
+    font-size: .8rem;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        right: 30px;
+        opacity: 1;
+    }
+}
+@keyframes fadein {
+    from {
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        right: 30px;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        right: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+    }
+} 
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        right: 30px;
+        opacity: 1;}
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+/* ----------------- */
+
 
 /* ERROR ANIMATION */
 .error{

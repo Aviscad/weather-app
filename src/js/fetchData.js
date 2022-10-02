@@ -1,4 +1,5 @@
 import key from "./key.js";
+import { showSnackbar } from "./snackbar.js";
 
 async function getData(
   latitude = 13.695804686295393,
@@ -15,10 +16,10 @@ async function getData(
       info = data;
       return info;
     } else {
-      console.log(response.status);
+      showSnackbar("#snackbar", response.status, "info");
     }
   } catch (error) {
-    console.log(error);
+    showSnackbar("#snackbar", error, "warning");
   }
   return info;
 }
@@ -39,10 +40,10 @@ async function getDataByCity(city) {
       return info;
     } else {
       const message = await response.json();
-      alert(message.message);
+      showSnackbar("#snackbar", message.message, "warning");
     }
   } catch (error) {
-    console.log(error);
+    showSnackbar("#snackbar", error, "warning");
   }
   return info;
 }
