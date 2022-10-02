@@ -155,6 +155,8 @@ async function filteredTimeline(lat, lon) {
     day.textContent = date[0] + ", " + date[1] + " " + date[2];
     div.appendChild(day);
     div.addEventListener("click", function () {
+      resetSelectedDay();
+      this.classList.add("selected-day");
       timeLine(info, this.dataset.date);
     });
     weatherDays.appendChild(div);
@@ -222,11 +224,18 @@ function timeLine(info, date) {
     container.appendChild(div);
   });
 }
+function resetSelectedDay() {
+  const dayCards = document.getElementsByClassName("day-card");
+  for (let i = 0; i < dayCards.length; i++) {
+    let currentDay = dayCards[i];
+    if (currentDay.classList.contains("selected-day")) {
+      currentDay.classList.remove("selected-day");
+    }
+  }
+}
 
 function skeletonLoader() {
   leftDiv.innerHTML = "";
-  leftDiv.classList.add("skeleton");
-  leftDiv.classList.add("skeleton-text");
 
   rightDiv.innerHTML = "";
   weatherDescription.innerHTML = "";

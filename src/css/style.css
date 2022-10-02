@@ -26,9 +26,10 @@ input[type="text"],
 input[type="submit"]{
     color: #000;
     height: 2rem;
-    padding: 0 .5rem 0 .5rem;
+    padding: 0 .6rem 0 .6rem;
     font-size: 1.125rem;
     border-radius: 5px;
+    text-align: center;
     border: none;
 }
 input[type="submit"]{
@@ -99,7 +100,7 @@ a:hover{
     margin: .125rem;
 }
 .weather-left img{ 
-    width: 125px;
+    width: 150px;
 }
 .weather-right{
     display: flex;
@@ -144,6 +145,10 @@ a:hover{
 .fa-wind{
     color: var(--image-bg-color);
 }
+.selected-day{
+    background-color: var(--text-white) !important;
+    color: var(--image-bg-color) !important;
+}
 .day-card{
     padding: .3rem .7rem;
     background-color: var(--image-bg-color);
@@ -151,10 +156,12 @@ a:hover{
     border-radius: 20px;
     min-width: 100px;
     text-align: center;
+    border: 1px solid var(--image-bg-color);
+    color: var(--text-white);
 }
 #weather-card{
     display: grid;
-    grid-template-columns: 130px auto;
+    grid-template-columns: 150px auto;
     padding: .5rem;
 }
 #weather-days{
@@ -193,12 +200,14 @@ a:hover{
 
 /* SKELETON LOADING ANIMATION */
 .skeleton{
+    width: 95vw;
     height: 235px;
     margin: .5rem;
     animation: skeleton-loading .5s linear infinite alternate;
     border-radius: 5px;
 }
 .skeleton-text{
+    width: 95vw;
     height: 25px;
 }
 
@@ -273,7 +282,7 @@ a:hover{
     }
     #weather-card{
         display: grid;
-        grid-template-columns: 130px 165px 220px;
+        grid-template-columns: 150px 160px 220px;
     }
     #weather-days{
         grid-template-columns: repeat(3, auto);
@@ -287,14 +296,13 @@ a:hover{
         gap: .5rem;
     }
 }
-
-@media only screen and (min-width: 750px){
-    #weather-days{
-        grid-template-columns: repeat(6, auto);
-        gap: .5rem;
-        justify-content: flex-start;
+@media only screen and (min-width: 1200px){
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
     }
 }
-
-
 /* ---------------- */
