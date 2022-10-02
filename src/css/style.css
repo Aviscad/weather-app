@@ -196,6 +196,7 @@ a:hover{
     padding: .7rem 1.125rem;
     position: fixed; 
     z-index: 2; 
+    font-size: .85rem;
     bottom: 15px;
     right: 15px;
 }
@@ -207,17 +208,14 @@ a:hover{
 .success{
     background-color: var(--success-bg-color);
     color: white;
-    font-size: .8rem;
 }
 .warning{
     background-color: var(--warning-bg-color);
     color: white;
-    font-size: .8rem;
 }
 .info{
     background-color: var(--info-bg-color);
     color: white;
-    font-size: .8rem;
 }
 
 @-webkit-keyframes fadein {
