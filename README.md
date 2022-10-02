@@ -4,6 +4,12 @@ Weather forecast site using the OpenWeatherAPI. You are be able to search for yo
 
 ## [Live Demo](https://aviscad.github.io/weather-app/)
 
+![main-view](https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-fullsize.png)
+
+| Mobile View                                                                                                   | Medium View                                                                                     |
+| ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-mobile.png" width="300px"> | <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-medium.png"> |
+
 ### Assets used in this project
 
 FavIcon by: <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
