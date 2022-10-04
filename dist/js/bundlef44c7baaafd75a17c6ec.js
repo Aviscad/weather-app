@@ -6810,6 +6810,7 @@ const weatherDescription = document.getElementsByClassName(
   "description-container"
 )[0];
 const getLocationForm = document.getElementById("location-form");
+let isFahrenheit = true;
 
 const currentLocation = navigator.geolocation.getCurrentPosition(
   (response) => {
@@ -6878,9 +6879,10 @@ function generalWeatherInfo(info) {
   //Toggle Temp
   btnToggleTemp.onclick = () => {
     btnToggleTemp.classList.add("selected-temperature");
-
     const children = container.children;
+
     if (btnToggleTemp.textContent == "°C") {
+      isFahrenheit = false;
       let currentTemp = parseFloat(temp.textContent);
       temp.textContent = (currentTemp * (9 / 5) + 32).toFixed(2);
       for (let i = 0; i < children.length; i++) {
@@ -6890,8 +6892,10 @@ function generalWeatherInfo(info) {
             ((parseFloat(tempTimeLine[0]) * 9) / 5 + 32).toFixed(2) + " °F";
         }
       }
+      isFahrenheit = true;
       btnToggleTemp.textContent = "°F";
     } else if (btnToggleTemp.textContent == "°F") {
+      isFahrenheit = true;
       temp.textContent = ((info.main.temp - 32) * (5 / 9)).toFixed(2);
       for (let i = 0; i < children.length; i++) {
         let tempTimeLine = children[i].lastChild.textContent.split(" ");
@@ -6900,6 +6904,7 @@ function generalWeatherInfo(info) {
             ((parseFloat(tempTimeLine[0]) - 32) * (5 / 9)).toFixed(2) + " °C";
         }
       }
+      isFahrenheit = false;
       btnToggleTemp.textContent = "°C";
     }
   };
@@ -7009,7 +7014,10 @@ function timeLine(info, date) {
     p.innerHTML = "<i class='fa-regular fa-clock'></i> " + time[1].slice(0, -3);
     p2.textContent = element.weather[0].main;
     p3.textContent = toDate.toString().slice(0, 10);
-    p4.textContent = element.main.temp + " °F";
+    isFahrenheit == true
+      ? (p4.textContent = element.main.temp + " °F")
+      : (p4.textContent =
+          ((parseFloat(element.main.temp) - 32) * (5 / 9)).toFixed(2) + " °C");
     img.src =
       "http://openweathermap.org/img/wn/" + element.weather[0].icon + "@2x.png";
     div.appendChild(p);
@@ -7049,6 +7057,7 @@ function skeletonLoader() {
 getLocationForm.onsubmit = (e) => {
   const city = document.getElementById("txtLocation");
   e.preventDefault();
+  isFahrenheit = true;
   if (city.value.trim() != "") {
     city.classList.remove("error");
     cityWeatherInfo(city.value);
@@ -7064,4 +7073,4 @@ getLocationForm.onsubmit = (e) => {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlef110720c11f45ca0773d.js.map
+//# sourceMappingURL=bundlef44c7baaafd75a17c6ec.js.map
