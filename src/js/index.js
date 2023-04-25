@@ -65,7 +65,7 @@ function generalWeatherInfo(info) {
 
   //Setting attributes
   location.textContent = info.name + ", " + info.sys.country;
-  countryFlag.src = "https://countryflagsapi.com/png/" + info.sys.country;
+  countryFlag.src = 'https://flagcdn.com/w320/' + info.sys.country.toLowerCase() + '.png';
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${info.weather[0].icon}@4x.png`
@@ -187,7 +187,7 @@ function resetHTML() {
     container.innerHTML =
     weatherDescription.innerHTML =
     weatherInfo.innerHTML =
-      "";
+    "";
 
   container.classList.remove("skeleton");
   weatherCard.classList.remove("skeleton");
@@ -224,7 +224,7 @@ function timeLine(info, date) {
     isFahrenheit == true
       ? (p4.textContent = element.main.temp + " °F")
       : (p4.textContent =
-          ((parseFloat(element.main.temp) - 32) * (5 / 9)).toFixed(2) + " °C");
+        ((parseFloat(element.main.temp) - 32) * (5 / 9)).toFixed(2) + " °C");
     img.src =
       "http://openweathermap.org/img/wn/" + element.weather[0].icon + "@2x.png";
     div.appendChild(p);
