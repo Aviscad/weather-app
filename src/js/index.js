@@ -65,7 +65,7 @@ function generalWeatherInfo(info) {
 
   //Setting attributes
   location.textContent = info.name + ", " + info.sys.country;
-  countryFlag.src = 'https://flagcdn.com/w320/' + info.sys.country.toLowerCase() + '.png';
+  countryFlag.src = 'https://flagcdn.com/' + info.sys.country.toLowerCase() + '.svg';
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${info.weather[0].icon}@4x.png`

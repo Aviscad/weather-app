@@ -6534,9 +6534,9 @@ module.exports = styleTagTransform;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getData": () => (/* binding */ getData),
-/* harmony export */   "getDataByCity": () => (/* binding */ getDataByCity),
-/* harmony export */   "getDataWeek": () => (/* binding */ getDataWeek)
+/* harmony export */   getData: () => (/* binding */ getData),
+/* harmony export */   getDataByCity: () => (/* binding */ getDataByCity),
+/* harmony export */   getDataWeek: () => (/* binding */ getDataWeek)
 /* harmony export */ });
 /* harmony import */ var _key_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./key.js */ "./src/js/key.js");
 /* harmony import */ var _snackbar_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./snackbar.js */ "./src/js/snackbar.js");
@@ -6550,7 +6550,7 @@ async function getData(
   let info;
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${_key_js__WEBPACK_IMPORTED_MODULE_0__["default"]}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${_key_js__WEBPACK_IMPORTED_MODULE_0__.API_KEY}`
     );
 
     if (response.status == 200) {
@@ -6571,9 +6571,9 @@ async function getDataByCity(city) {
   try {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city.trim() +
-        "&units=imperial&appid=" +
-        _key_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+      city.trim() +
+      "&units=imperial&appid=" +
+      _key_js__WEBPACK_IMPORTED_MODULE_0__.API_KEY
     );
 
     if (response.status == 200) {
@@ -6592,7 +6592,7 @@ async function getDataByCity(city) {
 
 async function getDataWeek(lat, lon) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${_key_js__WEBPACK_IMPORTED_MODULE_0__["default"]}`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${_key_js__WEBPACK_IMPORTED_MODULE_0__.API_KEY}`
   );
   const data = await response.json();
   return data;
@@ -6612,10 +6612,9 @@ async function getDataWeek(lat, lon) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   API_KEY: () => (/* binding */ API_KEY)
 /* harmony export */ });
-const key = "63439f886adf6016c1cfe19985f860cc";
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (key);
+const API_KEY = "63439f886adf6016c1cfe19985f860cc"
 
 
 /***/ }),
@@ -6629,7 +6628,7 @@ const key = "63439f886adf6016c1cfe19985f860cc";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "showSnackbar": () => (/* binding */ showSnackbar)
+/* harmony export */   showSnackbar: () => (/* binding */ showSnackbar)
 /* harmony export */ });
 function showSnackbar(element, message, color) {
   const snack = document.querySelector(element);
@@ -6752,10 +6751,13 @@ module.exports = __webpack_require__.p + "assets/cloud.png";
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
 /******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
+/******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
 /******/ 			}
 /******/ 		}
 /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
@@ -6858,7 +6860,7 @@ function generalWeatherInfo(info) {
 
   //Setting attributes
   location.textContent = info.name + ", " + info.sys.country;
-  countryFlag.src = "https://countryflagsapi.com/png/" + info.sys.country;
+  countryFlag.src = 'https://flagcdn.com/' + info.sys.country.toLowerCase() + '.svg';
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${info.weather[0].icon}@4x.png`
@@ -6980,7 +6982,7 @@ function resetHTML() {
     container.innerHTML =
     weatherDescription.innerHTML =
     weatherInfo.innerHTML =
-      "";
+    "";
 
   container.classList.remove("skeleton");
   weatherCard.classList.remove("skeleton");
@@ -7017,7 +7019,7 @@ function timeLine(info, date) {
     isFahrenheit == true
       ? (p4.textContent = element.main.temp + " °F")
       : (p4.textContent =
-          ((parseFloat(element.main.temp) - 32) * (5 / 9)).toFixed(2) + " °C");
+        ((parseFloat(element.main.temp) - 32) * (5 / 9)).toFixed(2) + " °C");
     img.src =
       "http://openweathermap.org/img/wn/" + element.weather[0].icon + "@2x.png";
     div.appendChild(p);
@@ -7073,4 +7075,4 @@ getLocationForm.onsubmit = (e) => {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlef44c7baaafd75a17c6ec.js.map
+//# sourceMappingURL=bundle4ca20d3642880039b692.js.map

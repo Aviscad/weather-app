@@ -1,4 +1,4 @@
-import key from "./key.js";
+import { API_KEY } from "./key.js"
 import { showSnackbar } from "./snackbar.js";
 
 async function getData(
@@ -8,7 +8,7 @@ async function getData(
   let info;
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`
     );
 
     if (response.status == 200) {
@@ -29,9 +29,9 @@ async function getDataByCity(city) {
   try {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city.trim() +
-        "&units=imperial&appid=" +
-        key
+      city.trim() +
+      "&units=imperial&appid=" +
+      API_KEY
     );
 
     if (response.status == 200) {
@@ -50,7 +50,7 @@ async function getDataByCity(city) {
 
 async function getDataWeek(lat, lon) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`
   );
   const data = await response.json();
   return data;

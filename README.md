@@ -6,7 +6,7 @@ Weather forecast site using [OpenWeatherAPI](https://openweathermap.org/) and [C
 
 ![main-view](https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-fullsize.png)
 
-| Mobile View                                                                                                   | Medium Size View                                                                                     |
+| Mobile View                                                                                                   | Medium Size View                                                                                |
 | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-mobile.png" width="300px"> | <img src="https://github.com/Aviscad/weather-app/blob/main/src/assets/preview/main-medium.png"> |
 
@@ -15,6 +15,8 @@ Weather forecast site using [OpenWeatherAPI](https://openweathermap.org/) and [C
 FavIcon by: <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
 
 ## Installation
+
+In "**src/js/key.js**" you can set your own OpenWeatherAPI Key
 
 ### Project Setup
 
@@ -33,5 +35,3 @@ npm run dev
 ```
 npm run build
 ```
-
-Also you will need to create a new JS file called "**key.js**" where you will put your API KEY
